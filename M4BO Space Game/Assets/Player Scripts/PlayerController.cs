@@ -5,23 +5,18 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Transform playerTr;
-    Vector2 playerRot = Vector2.zero;
-    Vector2 cameraRot = Vector2.zero;
-	public float sensetivity = 3;
+    public Transform cameraTransform ;
     public float moveSpeed = 10;
 
     void Start()
     {
         playerTr = GetComponent<Transform>();
+        cameraTransform = GameObject.Find("PlayerCamera").GetComponent<Transform>();
     }
 
 	void Update () 
     {
-		cameraRot.y += Input.GetAxis("Mouse X");
-		cameraRot.x += -Input.GetAxis("Mouse Y");
-		transform.eulerAngles = (Vector2)cameraRot * sensetivity;
-        playerRot.y = cameraRot.y;
-
+        playerTr.rotation = new Quaternion(0,cameraTransform.rotation.y, 0, 1);
         if (Input.GetButton("Vertical"))
         {
             playerTr.Translate(0,0,Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime);
@@ -30,8 +25,5 @@ public class PlayerController : MonoBehaviour
         {
             playerTr.Translate(Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime,0,0);
         }
-
-
-
 	}
 }
