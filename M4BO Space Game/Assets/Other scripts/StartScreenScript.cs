@@ -16,10 +16,4 @@ public class StartScreenScript : MonoBehaviour
     {
         SceneManager.LoadScene("PlayerGrounds");
     }
-    
-    public void EnableSettings()
-    {
-        StartScreen.SetActive(false);
-        SettingsScreen.SetActive(true);
-    }
 }

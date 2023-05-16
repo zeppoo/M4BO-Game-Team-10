@@ -11,64 +11,48 @@ public class SettingsClass : MonoBehaviour
     internal string Name;
     internal string type;
     internal GameObject obj;
+    private int min;
+    private int max;
+    public float sliderData;
+    
 
-    internal bool boolean;
-
-    internal double min;
-    internal double max;
-
-    private Scrollbar barUI;
-    private TextMeshProUGUI textUI;
-    private Button buttonUI;
-
-    private void ChangeSetting()
-    {
-        Debug.Log("hallo");
-    }
-
-    public void __init__(string name, string type, GameObject obj)
+    public void Initialize(string name, string type, GameObject obj, int min, int max)
     {
         this.Name = name;
         this.type = type;
+        this.min = min;
+        this.max = max;
         this.obj = obj;
+    }
 
-        if (this.type.ToLower() == "slider")
+    void Start()
+    {
+        if (this.type == "Slider")
         {
-            this.barUI = obj.GetComponentInChildren<Scrollbar>();
-            this.textUI = obj.transform.Find("Text").GetComponent<TextMeshProUGUI>();
-
-            this.min = double.Parse(this.obj.transform.Find("min").GetComponent<TextMeshProUGUI>().text);
-            this.max = double.Parse(this.obj.transform.Find("max").GetComponent<TextMeshProUGUI>().text);
-        }
-        else if (this.type.ToLower() == "boolean")
-        {
-            this.buttonUI = obj.GetComponentInChildren<Button>();
-
-            this.buttonUI.onClick.AddListener(ChangeSetting);
+            Sliders newSlider = new Sliders(this.min, this.max, this.obj);
         }
     }
-    internal void Activate()
+
+    void Update()
     {
-        if (this.type == "slider")
-        {
-            double bar;
+        sliderData = obj.GetComponent<Slider>().value;
+    }
+}
 
-            if (this.barUI.value >= 0 && this.barUI.value < this.max)
-            {
-                bar = (this.min - (this.barUI.value * this.min)) + (this.max * this.barUI.value);
-            }
-            else
-            {
-                bar = this.max;
-            }
+public class Sliders
+{
+    internal GameObject obj;
+    public Slider slider;
+    private int min;
+    private int max;
 
-            double showcaseValue = Math.Round(bar, 2);
-
-            this.textUI.text = showcaseValue.ToString().Replace(",", ".");
-        }
-        else if (this.type == "boolean")
-        {
-
-        }
+    public Sliders(int min, int max, GameObject obj)
+    {
+        this.min = min;
+        this.max = max;
+        this.obj = obj;
+        this.slider = obj.GetComponent<Slider>();
+        this.slider.minValue = this.min;
+        this.slider.maxValue = this.max;
     }
 }

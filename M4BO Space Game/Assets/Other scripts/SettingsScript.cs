@@ -10,29 +10,22 @@ using Unity.VisualScripting;
 
 public class SettingsScript : MonoBehaviour
 {
-    private List<SettingsClass> SettingsList = new List<SettingsClass>();
-    private void Start()
+    public GameObject fov;
+    public GameObject sensitivity;
+    public GameObject gameAudio;
+    internal SettingsClass fovSlider;
+
+    void Start()
     {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            GameObject obj = transform.GetChild(i).gameObject;
-
-            if (obj.name == "Image" || obj.name == "Title") { continue; }
-
-            string type = obj.transform.Find("type").GetComponent<TextMeshProUGUI>().text;
-
-            SettingsClass setting = obj.AddComponent<SettingsClass>();
-            setting.__init__(obj.name, type, obj);
-
-            SettingsList.Add(setting);
-        }
+        fovSlider = fov.AddComponent<SettingsClass>();
+        fovSlider.Initialize("FOV", "Slider", fov, 40, 100);
+        SettingsClass sensitivitySlider = sensitivity.AddComponent<SettingsClass>();
+        sensitivitySlider.Initialize("Sensitivity", "Slider", sensitivity, 1, 10);
     }
-
-    private void Update()
+    
+    void Update()
     {
-        foreach (var setting in SettingsList)
-        {
-            setting.Activate();
-        }
+        GameManagement.fov = fovSlider.sliderData;
+        Debug.Log(GameManagement.fov);
     }
 }

@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManagement : MonoBehaviour
+public class GameManagement
 {
-    static public double sensitivity;
-    static public double fov;
-
-    
+    public static float sensitivity;
+    public static float fov;
 }
