@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Vector2 cameraRot = Vector2.zero;
+    public GameObject playerCamera;
     public float sensetivity = 3;
 
     // Update is called once per frame
     void Update()
     {
-        cameraRot.y += Input.GetAxis("Mouse X");
-		cameraRot.x += -Input.GetAxis("Mouse Y");
-        transform.eulerAngles = (Vector2)cameraRot * sensetivity;
+        Vector2 input = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+
+        transform.Rotate(0, input.x * sensetivity, 0);
+
+        playerCamera.transform.Rotate(-input.y * sensetivity, 0, 0);
     }
 }
