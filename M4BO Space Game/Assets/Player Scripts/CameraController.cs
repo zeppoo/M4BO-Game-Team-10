@@ -5,13 +5,19 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Vector2 cameraRot = Vector2.zero;
-    public float sensetivity = 3;
+    public float sensitivity = GameManagement.sensitivity;
+    public Camera camera;
 
-    // Update is called once per frame
+    void Start()
+    {
+        camera = GetComponent<Camera>();
+        camera.fieldOfView = GameManagement.fov;
+    }
+
     void Update()
     {
         cameraRot.y += Input.GetAxis("Mouse X");
 		cameraRot.x += -Input.GetAxis("Mouse Y");
-        transform.eulerAngles = (Vector2)cameraRot * sensetivity;
+        transform.eulerAngles = (Vector2)cameraRot * sensitivity;
     }
 }

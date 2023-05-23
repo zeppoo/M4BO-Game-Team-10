@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManagement
 {
-    public static float sensitivity;
-    public static float fov;
+    public static float sensitivity {get; set;}
+    public static float fov {get; set;}
+    public static bool audio;
 }
