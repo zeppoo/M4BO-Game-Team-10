@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ShipCameraController : MonoBehaviour
 {
-    public GameObject playerCamera;
     Rigidbody rb;
     public float rotationSpeed = 2;
     public float movementSpeed = 10;
@@ -32,10 +31,6 @@ public class ShipCameraController : MonoBehaviour
         {
             rb.velocity = new Vector3(0,0,0);
         }
-        /*
-        if (Input.GetAxis("Horizontal"))
-        {
-            
-        }*/
+        
     }
 }
