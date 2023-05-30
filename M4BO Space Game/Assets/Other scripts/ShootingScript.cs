@@ -20,6 +20,14 @@ public class ShootingScript : MonoBehaviour
 
     public GameObject bullet;
 
+    private GameObject gun;
+    private GameObject cam;
+
+    private void Start()
+    {
+        cam = transform.Find("PlayerCamera").gameObject;
+    }
+
     IEnumerator wait()
     {
         yield return new WaitForSeconds(reloadTime);
