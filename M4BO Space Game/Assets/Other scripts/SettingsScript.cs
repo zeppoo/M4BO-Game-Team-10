@@ -22,9 +22,9 @@ public class SettingsScript : MonoBehaviour
     public void Start()
     {
         fovSlider = fov.AddComponent<SettingsClass>();
-        fovSlider.Initialize("FOV", "Slider", fov, 40, 100);
+        fovSlider.Initialize("FOV", "Slider", fov, 60, 100);
         sensitivitySlider = sensitivity.AddComponent<SettingsClass>();
-        sensitivitySlider.Initialize("Sensitivity", "Slider", sensitivity, 1, 10);
+        sensitivitySlider.Initialize("Sensitivity", "Slider", sensitivity, 4, 10);
         audioButton = gameAudio.AddComponent<SettingsClass>();
         audioButton.Initialize("Audio", "Button", gameAudio, 0, 1);
     }
