@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Scanning : MonoBehaviour
 {
-    public string[] scannedObjects;
+    public List<string> scannedObjects;
     [SerializeField] public LayerMask scannable;
     void Start()
     {
@@ -19,12 +19,14 @@ public class Scanning : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
-            Ray ray = new Vector3(transform.)
+            Ray ray = new Ray(transform.position, transform.forward);
 
             if (Physics.Raycast(ray, out hit, scannable))
             {
-                Debug.DrawRay(ray.origin, ray.direction, UnityEngine.Color.green, 100f);
-                Debug.Log(hit.collider.gameObject.name);
+                if (hit.collider.gameObject.CompareTag("Scannable") && !scannedObjects.Contains(hit.collider.gameObject.name))
+                {
+                    scannedObjects.Add(hit.collider.gameObject.name);
+                }
             }
         }
     }
