@@ -11,4 +11,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlayerGrounds.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Desert Planet.unity
+    guid: db371fe15064b5040a3d2a524cdd609f
+  - enabled: 1
+    path: Assets/Scenes/Ice Planet.unity
+    guid: 45d86099fb24abb448c1836ef3f45277
+  - enabled: 1
+    path: Assets/Scenes/Magical Planet.unity
+    guid: e6ec1ed38ee6b6442a41689d15f118b3
+  - enabled: 1
+    path: Assets/Scenes/SpaceGrounds.unity
+    guid: 2a85e0ea4b4cb0646945758f5b43b6d4
   m_configObjects: {}
