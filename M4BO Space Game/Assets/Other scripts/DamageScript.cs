@@ -34,6 +34,9 @@ public class DamageScript : MonoBehaviour
 
             if (collider.tag == "Enemy")
             {
+                EnemyScript enemieStats = collider.GetComponent<EnemyScript>();
+                enemieStats.health -= 10;
+
                 collider.GetComponent<EnemyScript>().canSee = true;
             }
         }
