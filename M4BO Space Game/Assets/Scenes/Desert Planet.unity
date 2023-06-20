@@ -656,11 +656,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reloadTime: 2.5
   bullet: {fileID: 5034046985034589979, guid: a982f164fcb239b45a06b9517b43664b, type: 3}
---- !u!4 &758376314 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6354838361950662718, guid: f74ee964e857daf42a22515b03a76188, type: 3}
-  m_PrefabInstance: {fileID: 1324146429}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &780782488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1113,7 +1108,7 @@ GameObject:
   - component: {fileID: 1316630594}
   - component: {fileID: 1316630593}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Nigger Hater
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1247,19 +1242,19 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 758376314}
+    m_TransformParent: {fileID: 2019763595}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 709fd2d7d9d61cf4785b3885d938edcf, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 709fd2d7d9d61cf4785b3885d938edcf, type: 3}
       propertyPath: m_LocalScale.x
-      value: 12.760107
+      value: 12.760109
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 709fd2d7d9d61cf4785b3885d938edcf, type: 3}
       propertyPath: m_LocalScale.y
-      value: 6.4034114
+      value: 6.403412
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 709fd2d7d9d61cf4785b3885d938edcf, type: 3}
       propertyPath: m_LocalScale.z
@@ -1271,7 +1266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 709fd2d7d9d61cf4785b3885d938edcf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.15599823
+      value: -0.34400177
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 709fd2d7d9d61cf4785b3885d938edcf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2041,6 +2036,11 @@ CanvasRenderer:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8416654780135429774, guid: 3b703927d4678974296ebeed5fc54326, type: 3}
   m_PrefabInstance: {fileID: 457761642}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2019763595 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6354838362488408512, guid: f74ee964e857daf42a22515b03a76188, type: 3}
+  m_PrefabInstance: {fileID: 1324146429}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2072240717 stripped
 Transform:
