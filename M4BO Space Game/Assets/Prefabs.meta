@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: cdaf231d315371f428a9992e40a29bfe
+=======
+guid: 174762db74245de46941dc0c0a175144
+>>>>>>> origin/ShootingSystem
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
