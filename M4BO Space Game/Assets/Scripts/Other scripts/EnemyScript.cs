@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -72,6 +72,13 @@ public class EnemyScript : MonoBehaviour
         {
             enemy.transform.LookAt(lookAtPos);
             animator.SetTrigger("Attack");
+
+            GameObject part = new GameObject();
+            part.name = "Hitbox";
+            
+            BoxCollider collision = part.AddComponent<BoxCollider>();
+
+            part.transform.position = lookAtPos * 2;
         }
         else
         {
