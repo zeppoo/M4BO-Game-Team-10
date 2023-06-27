@@ -17,12 +17,13 @@ public class EnemyScript : MonoBehaviour
     public float cooldown;
 
     public double maxHealth;
-    public double health;
 
     public bool canSee = false;
 
     public GameObject target;
     public GameObject hitbox;
+
+    internal double health;
 
     private float cooldownTime = 0;
 
