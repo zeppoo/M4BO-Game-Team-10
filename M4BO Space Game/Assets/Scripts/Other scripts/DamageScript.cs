@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class DamageScript : MonoBehaviour
 
         string tag = gameObject.tag.ToLower();
 
+        Debug.Log(tag);
+
         if (tag == "bullet")
         {
             Vector3 position = transform.position;
@@ -23,7 +26,7 @@ public class DamageScript : MonoBehaviour
             Rigidbody rb = GetComponent<Rigidbody>();
             ParticleSystem particle = gameObject.GetComponent<ParticleSystem>();
 
-            rb.velocity = new Vector3(0,0,0);
+            rb.velocity = new Vector3(0, 0, 0);
             rb.position = rb.position;
 
             Destroy(gameObject.GetComponent<Rigidbody>());
@@ -38,6 +41,16 @@ public class DamageScript : MonoBehaviour
                 enemieStats.health -= 10;
 
                 collider.GetComponent<EnemyScript>().canSee = true;
+            }
+        }
+        else if (tag == "hitbox")
+        {
+            Debug.Log("the one piece is real!");
+            if (collider.name == "Player")
+            {
+                PlayerHealth playerHealth = collider.GetComponent<PlayerHealth>();
+
+                playerHealth.health -= 20;
             }
         }
     }

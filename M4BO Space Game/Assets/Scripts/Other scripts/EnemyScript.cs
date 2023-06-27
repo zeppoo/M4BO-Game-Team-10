@@ -12,6 +12,9 @@ public class EnemyScript : MonoBehaviour
 
     public float range;
     public float attackRange;
+    public float damage;
+
+    public float cooldown;
 
     public double maxHealth;
     public double health;
@@ -19,12 +22,16 @@ public class EnemyScript : MonoBehaviour
     public bool canSee = false;
 
     public GameObject target;
-    
+    public GameObject hitbox;
+
+    private float cooldownTime = 0;
+
+    private bool isCooldown = false;
+
     private GameObject enemy;
     private GameObject healthbar;
 
     private Animator animator;
-
     private void updateHealth()
     {
         RectTransform bar = healthbar.transform.Find("bar").GetComponent<RectTransform>();
@@ -73,12 +80,15 @@ public class EnemyScript : MonoBehaviour
             enemy.transform.LookAt(lookAtPos);
             animator.SetTrigger("Attack");
 
-            GameObject part = new GameObject();
-            part.name = "Hitbox";
-            
-            BoxCollider collision = part.AddComponent<BoxCollider>();
+            if (!isCooldown)
+            {
+                GameObject newHitbox = Instantiate(hitbox);
+                newHitbox.transform.position = enemy.transform.position + (enemy.transform.forward * 2);
 
-            part.transform.position = lookAtPos * 2;
+                Destroy(newHitbox, 2.5f);
+
+                isCooldown = !isCooldown;
+            }
         }
         else
         {
@@ -94,5 +104,16 @@ public class EnemyScript : MonoBehaviour
         {
             canSee = false;
         }*/
+
+        if (isCooldown)
+        {
+            cooldownTime += Time.deltaTime;
+
+            if (cooldownTime >= cooldown)
+            {
+                isCooldown = false;
+                cooldownTime = 0;
+            }
+        }
     }
 }
