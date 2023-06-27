@@ -10,7 +10,7 @@ public class StartGame : MonoBehaviour
     
     public void Click()
     {
-        SceneManager.LoadScene("SpaceGrounds");
+        SceneManager.LoadScene("Desert Planet");
         lockMode = CursorLockMode.Locked;
         Cursor.lockState = lockMode;
     }
