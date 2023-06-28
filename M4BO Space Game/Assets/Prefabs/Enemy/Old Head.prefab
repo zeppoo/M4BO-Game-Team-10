@@ -187,7 +187,6 @@ GameObject:
   - component: {fileID: 3116589853747058302}
   - component: {fileID: 3116589853747058297}
   - component: {fileID: 3116589853747058296}
-  - component: {fileID: 3116589853747058299}
   m_Layer: 0
   m_Name: Old Head
   m_TagString: Enemy
@@ -242,28 +241,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &3116589853747058299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3116589853747058298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07c63935add31a74ea1fd1cc29955e27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  range: 40
-  attackRange: 3
-  damage: 15
-  cooldown: 3
-  maxHealth: 50
-  health: 50
-  canSee: 0
-  target: {fileID: 0}
-  hitbox: {fileID: 4297145398547195761, guid: ddd638174899a374cabfc2e117eb7d55, type: 3}
 --- !u!1 &3116589854882717759
 GameObject:
   m_ObjectHideFlags: 0

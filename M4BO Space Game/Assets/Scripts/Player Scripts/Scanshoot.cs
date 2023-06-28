@@ -7,30 +7,27 @@ using UnityEngine;
 
 public class Scanshoot : MonoBehaviour
 {
+    public AudioSource smallLaserSound;
+    public AudioSource bigLaserSound;
+
+    public GameObject laser;
+    public GameObject bigLaser;
+    public GameObject gun;
+
+    private float switchCooldownTime = 0;
     public float reloadTime;
     public float switchTime;
-
-    public bool gunEquip = false;
-
-    [SerializeField]public List<string> scannedObjects;
-
-    public LayerMask scannable;
-
-    public GameObject bullet;
-
-    internal bool canShoot = true;
-
-    private float speed = 30f;
-    private float destroyTime = 10f;
-    private float switchCooldownTime = 0;
-
-    private float forwardPos = 2f;
-    private float rightPos = .3f;
-    private float upPos = .2f;
+    public int laserSpeed = 5;
 
     private bool switchCooldown = true;
+    internal bool canShoot = true;
+    public bool gunEquip = true;
 
-    private GameObject gun;
+
+    void Start()
+    {
+        
+    }
 
     void Update()
     {
@@ -39,17 +36,6 @@ public class Scanshoot : MonoBehaviour
             if (switchCooldown)
             {
                 gunEquip = !gunEquip;
-
-                if (!gunEquip)
-                {
-                    transform.Find("Gun").gameObject.SetActive(false);
-                    transform.Find("scanner").gameObject.SetActive(true);
-                }
-                else
-                {
-                    transform.Find("Gun").gameObject.SetActive(true);
-                    transform.Find("scanner").gameObject.SetActive(false);
-                }
             }
         }
 
@@ -59,24 +45,27 @@ public class Scanshoot : MonoBehaviour
             Ray ray = new Ray(transform.position, transform.forward);
             if (gunEquip == false)
             {
-                if (Physics.Raycast(ray, out hit, scannable))
+                if (Physics.Raycast(ray, out hit))
                 {
-                    if (hit.collider.gameObject.CompareTag("Scannable") && !scannedObjects.Contains(hit.collider.gameObject.name))
-                    {
-                        scannedObjects.Add(hit.collider.gameObject.name);
-                    }
+                    bigLaserSound.Play();
+                    GameObject newLaser = Instantiate(bigLaser);
+                    newLaser.transform.rotation = transform.rotation;
+                    newLaser.transform.position = gun.transform.position;
                 }
             }
             else if (gunEquip == true && canShoot)
             {
-                GameObject newBullet = Instantiate(bullet);
-                newBullet.tag = "Bullet";
-                newBullet.GetComponent<ParticleSystem>().Stop();
-                newBullet.transform.position = transform.position + (transform.forward * forwardPos + transform.right * rightPos + transform.up * upPos);
-                Rigidbody bulletRB = newBullet.GetComponent<Rigidbody>();
-                bulletRB.velocity = transform.forward * speed;
-                Destroy(newBullet, destroyTime);
-
+                smallLaserSound.Play();
+                GameObject newLaser = Instantiate(laser);
+                newLaser.transform.rotation = transform.rotation;
+                newLaser.transform.position = gun.transform.position;
+                if (Physics.Raycast(ray, out hit))
+                {
+                    if (hit.collider.gameObject.CompareTag("Enemy"))
+                    {
+                        Destroy(hit.collider.gameObject);
+                    }
+                }
             }
         }
 
