@@ -14,12 +14,10 @@ public class Scanshoot : MonoBehaviour
     public GameObject bigLaser;
     public GameObject gun;
 
-    private float switchCooldownTime = 0;
     public float reloadTime;
     public float switchTime;
     public int laserSpeed = 5;
 
-    private bool switchCooldown = true;
     internal bool canShoot = true;
     public bool gunEquip = true;
 
@@ -31,29 +29,11 @@ public class Scanshoot : MonoBehaviour
 
     void Update()
     {
-        if (Input.mouseScrollDelta.y < 0 || Input.mouseScrollDelta.y > 0)
-        {
-            if (switchCooldown)
-            {
-                gunEquip = !gunEquip;
-            }
-        }
-
-        if (Input.GetMouseButtonDown(0))//if left mouse gets clicked it checks which equipment is true
+        if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
             Ray ray = new Ray(transform.position, transform.forward);
-            if (gunEquip == false)
-            {
-                if (Physics.Raycast(ray, out hit))
-                {
-                    bigLaserSound.Play();
-                    GameObject newLaser = Instantiate(bigLaser);
-                    newLaser.transform.rotation = transform.rotation;
-                    newLaser.transform.position = gun.transform.position;
-                }
-            }
-            else if (gunEquip == true && canShoot)
+            if (canShoot)
             {
                 smallLaserSound.Play();
                 GameObject newLaser = Instantiate(laser);
@@ -63,7 +43,8 @@ public class Scanshoot : MonoBehaviour
                 {
                     if (hit.collider.gameObject.CompareTag("Enemy"))
                     {
-                        Destroy(hit.collider.gameObject);
+                        Destroy(hit.collider.gameObject, .2f);
+                        GameManagement.score++;
                     }
                 }
             }
@@ -76,17 +57,6 @@ public class Scanshoot : MonoBehaviour
             {
                 canShoot = true;
                 reloadTime = 0;
-            }
-        }
-
-        if (!switchCooldown)
-        {
-            switchCooldownTime += Time.deltaTime;
-
-            if (switchCooldownTime >= switchTime)
-            {
-                switchCooldown = true;
-                switchCooldownTime = 0;
             }
         }
     }
